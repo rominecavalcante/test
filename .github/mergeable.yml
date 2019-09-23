@@ -7,9 +7,9 @@ mergeable:
        no_empty:
           enabled: true # Cannot be empty when true.
           message: 'Needs QA Approval'
-        must_include:
+       must_include:
           regex: 'QA Approved'
           message: 'Approved by QA team'
-        must_exclude:
+       must_exclude:
           regex: 'Need QA'
           message: 'Need be tested by QA'
