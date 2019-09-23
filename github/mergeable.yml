@@ -3,12 +3,22 @@ mergeable:
   - when: pull_request.labeled, issue.labeled, pull_request_review.labeled # can be one or more
     validate:
       # list of validators. Specify one or more.
-      - do: approvals
-        min:
-          count: 1 # Number of minimum reviewers. In this case 2.
-          message: 'QA Team needs to Test'
-        required:
-          reviewers: [ rominecavalcante] # list of github usernames required to review
-          owners: true # Optional boolean. When true, the file .github/CODEOWNER is read and owners made required reviewers
-          assignees: true # Optional boolean. When true, PR assignees are made required reviewers.
+      #- #do: approvals
+        #min:
+          #count: 1 # Number of minimum reviewers. In this case 2.
+          #message: 'QA Team needs to Test'
+        #required:
+          #reviewers: [ rominecavalcante] # list of github usernames required to review
+          #owners: true # Optional boolean. When true, the file .github/CODEOWNER is read and owners made required reviewers
+          #assignees: true # Optional boolean. When true, PR assignees are made required reviewers.
           #message: 'Custom message...'
+        do: label
+        no_empty:
+          enabled: false # Cannot be empty when true.
+          message: 'Needs QA Approval'
+        must_include:
+          regex: 'QA Approved'
+          message: 'Approved by QA team'
+        must_exclude:
+          regex: 'Need QA'
+          message: 'Need be tested by QA'
