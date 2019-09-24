@@ -11,5 +11,5 @@ mergeable:
           regex: 'QA Approved|Skip QA'
           message: 'Approved by QA team'
        must_exclude:
-          regex: 'Need QA| QA Rejected'
+          regex: 'Need QA| QA Rejected '
           message: 'Need be tested by QA'
