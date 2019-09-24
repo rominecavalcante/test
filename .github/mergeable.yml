@@ -1,6 +1,6 @@
 version: 2
 mergeable:
-  - when: pull_request.labeled, pull_request.unlabeled, pull_request_review.labeled, pull_request_review.unlabeled, issues.labeled, issues.unlabeled  # can be one or more
+  - when: pull_request.*, pull_request.*, pull_request_review.*, pull_request_review.*, issues.*, issues.*  # can be one or more
     validate:
       # #list of validators. Specify one or more.
     -  do: label
@@ -8,7 +8,7 @@ mergeable:
           enabled: true # Cannot be empty when true.
           #message: 'Needs QA Approval'
        must_include:
-          regex: 'QA Approved'
+          regex: 'QA Approved|Skip QA'
           message: 'Approved by QA team'
        must_exclude:
           regex: 'Need QA'
