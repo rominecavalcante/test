@@ -1,11 +1,11 @@
 version: 2
 mergeable:
-  - when: pull_request.labeled, pull_request_review.labeled #,issues.*  # can be one or more
+  - when: pull_request.*, pull_request_review.* #,issues.*  # can be one or more
     validate:
       # #list of validators. Specify one or more.
     -  do: label
        no_empty:
-          enabled: true # Cannot be empty when true.
+          enabled: false # Cannot be empty when true.
           #message: 'Needs QA Approval'
        must_include:
           regex: 'QA Approved'
